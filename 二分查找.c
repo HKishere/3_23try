@@ -3,7 +3,7 @@
 int search(int a[],int left,int right,int find){
     int mid;
     while(left<=right){
-        mid=(right-left)/ 2;
+        mid=(right+left)/ 2;
         if(a[mid]>find){
             right=mid-1;
         }
@@ -13,10 +13,8 @@ int search(int a[],int left,int right,int find){
         else if(a[mid]==find){
             return mid;
         }
-        else{
-            return -1;
-        }
     }
+    return -1;
 }
 int main(){
     int a[10]={1,4,6,8,12,23,34,45,56,78};
