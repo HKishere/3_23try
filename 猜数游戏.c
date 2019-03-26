@@ -5,10 +5,10 @@
 int menu() {
 	int c;
 	do {
-		printf("------------------\n");
-		printf("-----1.play-------\n");
-		printf("-----2.exit-------\n");
-		printf("------------------\n");
+		printf("--------------------\n");
+		printf("-------1.play-------\n");
+		printf("-------2.exit-------\n");
+		printf("--------------------\n");
 		scanf("%d", &c);
 		if (c == 2) {
 			break;
