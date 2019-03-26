@@ -12,7 +12,8 @@ int password(){
         //字符串不要取地址
         //判断字符串是否相等不能用等号比较
             break;
-        }else {
+        }
+		else {
             printf("worng password!\n");
         }
     }
