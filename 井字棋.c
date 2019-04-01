@@ -61,7 +61,7 @@ int winner_checker() {
 	char playerwin[3] = { 'X','X','X' };
 	char computerwin[3] = { 'O','O','O' };
 	if (strcmp(ches[0],playerwin)||strcmp(ches[1],playerwin)||strcmp(ches[2],playerwin)){
-		return 0;//0 Express player win
+		return 0;//0 mean player win
 	}
 	else if (ches[0][0]=='X'&&ches[1][1]=='X'&&ches[2][2]=='X'){
 		return 0;
@@ -91,9 +91,30 @@ int computermove() {
 	return 0;
 }
 int game() {
-	printboard();
-	playermove();
-	computermove();
+	int win=100;
+	while(1){
+		printboard();
+		playermove();
+		win=winner_checker();
+		if(win==1){
+			printf("computer win!");
+			break;
+		}
+		else if(win==0){
+		 	printf("player win");
+		 	break;
+		}
+		computermove();
+		winner_checker();
+		if(win==1){
+			printf("computer win!");
+			break;
+		}
+		else if(win==0){
+		 	printf("player win");
+		 	break;
+		}
+	}
 	return 0;
 }
 int main (){
