@@ -21,7 +21,7 @@ int menu() {
 				return  1;
 			}
 			else if (choose != 1) {
-				printf("illegal input ! please enter again:");
+				printf("illegal input ! please enter again:\n");
 			}
 			else {
 				break;
@@ -42,16 +42,21 @@ int printboard() {
 int playermove() {
 	int row, col;
 	while (1) {
+		getchar();/*Çå³ýÊäÈë»º³åÇø*/
 		printf("please enter the coordinate you want to place your chess,use ','to separate :\n ");
 		scanf("%d,%d", &row, &col);
-		if (ches[row - 1][col - 1] != ' ') {
-			printf("The coordinate you enter has been occupied !");
+		if (row > 3 || row < 0 || col>3 || col < 0) {
+			printf("please enter the correct coordinate!\n");
 			continue;
 		}
-		else {
+		if (ches[row - 1][col - 1] == '\0') {
 			ches[row - 1][col - 1] = 'X';
-			printf("player place the chess in'%d,%d\n'", row, col);
+			printf("player place the chess in'%d,%d\n'", row, col); 
 			break;
+		}
+		else {
+			printf("The coordinate you enter has been occupied !\n");
+			continue;
 		}
 	}
 	printboard();
@@ -60,13 +65,13 @@ int playermove() {
 int winner_checker() {
 	char playerwin[3] = { 'X','X','X' };
 	char computerwin[3] = { 'O','O','O' };
-	if (strcmp(ches[0],playerwin)||strcmp(ches[1],playerwin)||strcmp(ches[2],playerwin)){
+	if (strcmp(ches[0],playerwin)==0||strcmp(ches[1],playerwin)==0||strcmp(ches[2],playerwin)==0){
 		return 0;//0 mean player win
 	}
 	else if (ches[0][0]=='X'&&ches[1][1]=='X'&&ches[2][2]=='X'){
 		return 0;
 	}
-	if (strcmp(ches[0],computerwin)||strcmp(ches[1],computerwin)||strcmp(ches[2],computerwin)){
+	if (strcmp(ches[0],computerwin)==0||strcmp(ches[1],computerwin)==0||strcmp(ches[2],computerwin)==0){
 		return 1;// 1 means computer win
 	}else if (ches[0][0] == 'O'&&ches[1][1] == 'O'&&ches[2][2] == 'O'){
 		return 1;
@@ -74,20 +79,20 @@ int winner_checker() {
 	return 2;
 }
 int computermove() {
-	srand((unsigned int)time(0));
+	/*srand((unsigned int)time(0));*/
 	while (1) {
 		int col = rand() % 3 + 1;
 		int row = rand() % 3 + 1;
-		if (ches[row - 1][col - 1] != ' ') {
-			continue;
-		}
-		else {
+		if (ches[row - 1][col - 1] == '\0') {
 			ches[row - 1][col - 1] = 'O';
-			printf("computer place the chess in'%d,%d\n'", row, col);
+			printf("computer place the chess in'%d,%d'\n", row, col);
 			break;
 		}
-		printboard();
+		else {
+			continue;
+		}	
 	}
+	printboard();
 	return 0;
 }
 int game() {
@@ -97,11 +102,11 @@ int game() {
 		playermove();
 		win=winner_checker();
 		if(win==1){
-			printf("computer win!");
+			printf("computer win!\n");
 			break;
 		}
 		else if(win==0){
-		 	printf("player win");
+		 	printf("player win\n");
 		 	break;
 		}
 		computermove();
