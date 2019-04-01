@@ -1,7 +1,7 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
-int main (){
+int print(){
 	int a, b, n;
 	printf("please enter the number:");
 	scanf("%d", &n);
@@ -18,10 +18,15 @@ int main (){
 			}
 			else {
 				printf(" \t");
-			}
+			}//以上代码的作用主要是用来对齐各个输出
 		}
 		printf("\n");
 	}
+	return 0;
+}
+int main (){
+	print();
 	system("pause");
 	return 0;
 }
+
