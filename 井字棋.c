@@ -65,13 +65,13 @@ int playermove() {
 int winner_checker() {
 	char playerwin[3] = { 'X','X','X' };
 	char computerwin[3] = { 'O','O','O' };
-	if (strcmp(ches[0],playerwin)==0||strcmp(ches[1],playerwin)==0||strcmp(ches[2],playerwin)==0||(ches[0][0]=='X'&&ches[1][0]=='X'&&ches[2][0])||ches[0][1]=='X'&&ches[1][1]=='X'&&ches[2][1])||ches[0][2]=='X'&&ches[1][2]=='X'&&ches[2][2])){
+	if (strcmp(ches[0],playerwin)==0||strcmp(ches[1],playerwin)==0||strcmp(ches[2],playerwin)==0||(ches[0][0]=='X'&&ches[1][0]=='X'&&ches[2][0])||ches[0][1]=='X'&&ches[1][1]=='X'&&ches[2][1])||(ches[0][2]=='X'&&ches[1][2]=='X'&&ches[2][2])){
 		return 0;//0 mean player win
 	}
 	else if (ches[0][0]=='X'&&ches[1][1]=='X'&&ches[2][2]=='X'){
 		return 0;
 	}
-	if (strcmp(ches[0],computerwin)==0||strcmp(ches[1],computerwin)==0||strcmp(ches[2],computerwin)==0)||(ches[0][0]=='O'&&ches[1][0]=='O'&&ches[2][0])||ches[0][1]=='O'&&ches[1][1]=='O'&&ches[2][1])||ches[0][2]=='O'&&ches[1][2]=='O'&&ches[2][2]){
+	if (strcmp(ches[0],computerwin)==0||strcmp(ches[1],computerwin)==0||strcmp(ches[2],computerwin)==0)||(ches[0][0]=='O'&&ches[1][0]=='O'&&ches[2][0])||ches[0][1]=='O'&&ches[1][1]=='O'&&ches[2][1])||(ches[0][2]=='O'&&ches[1][2]=='O'&&ches[2][2]){
 		return 1;// 1 means computer win
 	}else if (ches[0][0] == 'O'&&ches[1][1] == 'O'&&ches[2][2] == 'O'){
 		return 1;
