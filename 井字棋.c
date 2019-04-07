@@ -3,9 +3,9 @@
 #include<stdlib.h>
 #include <string.h>
 #include <time.h>
-#define MAX_ROW 3;
-#define MAX_COL 3;
-char ches[3][3];
+#define MAX_ROW 3
+#define MAX_COL 3//';'is not need!
+char ches[MAX_ROW][MAX_COL];
 int menu() {
 	while (1) {
 		int choose;
@@ -45,7 +45,7 @@ int playermove() {
 		getchar();/*Çå³ýÊäÈë»º³åÇø*/
 		printf("please enter the coordinate you want to place your chess,use ','to separate :\n ");
 		scanf("%d,%d", &row, &col);
-		if (row >3 || row < 0 || col>3 || col < 0) {
+		if (row >3 || row < 1 || col>3 || col < 1) {
 			printf("please enter the correct coordinate!\n");
 			continue;
 		}
