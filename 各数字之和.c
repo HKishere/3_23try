@@ -1,19 +1,14 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
-int fun(int a) {
-	int size, i;
-	for ( size= 0; a >= 10; ++size) {
-		a / 10;
-	}
-	if (i<size){
-		return a ;
-	}
-	else {
-		return fun(a % 10);
-		a = a % 10;
-	}
-
+int fun(int source) {
+	int tmp=source;
+    if(tmp>=10){
+        return tmp%10+fun(tmp / 10);
+    }
+    else{
+        return source;
+    }
 }
 int main (){
 	int num;
