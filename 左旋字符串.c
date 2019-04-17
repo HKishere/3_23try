@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 char* leftroll(char* source ,unsigned int i) {
+	unsigned int len = strlen(source)-1;
 	char temp;
 	i %= len;
 	for (; i != 0; --i) {
