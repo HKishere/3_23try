@@ -15,9 +15,30 @@ char* leftroll(char* source ,unsigned int i) {
 	}
 	return source;
 }
+int judgeleftrollstr(char* source, char* judgech) {
+	char* temp = (char*)calloc(strlen(source) * 2 + 1, sizeof(char));
+	if (temp==NULL){
+		return -1;
+	}
+	strcpy(temp, source);
+	strcat(temp, source);
+
+	if (strstr(temp,judgech)) {
+		free(temp);
+		printf("find it!\n");
+		return 1;
+	}
+	else {
+		free(temp);
+		printf("not find!\n");
+		return 0;
+	}
+}
 int main (){
 	char str[] = "kishere";
-	leftroll(str, 90);
+	char str2[] = "she";
+	leftroll(str, 1);
+	judgeleftrollstr(str, str2);
 	printf("%s\n", str);
 	system("pause");
 	return 0;
