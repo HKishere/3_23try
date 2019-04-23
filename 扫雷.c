@@ -17,9 +17,10 @@ int menu() {
 		printf("**2.exit***\n");
 		printf("***********\n");
 		scanf("%d", &choise);
-		if (choise==1){
+		if (choise == 1){
 			return 1;
-		}else if (choise==2){
+		}else if (choise == 2){
+			printf("ты╪Ш!\n");
 			return 2;
 		}
 		else {
@@ -90,7 +91,7 @@ void printmap() {
 }
 void dig(int row, int col) {
 	if (row < 0 || row>9 || col < 0 || col>9) {
-		return 0;
+		return ;
 	}
 		maps[row][col] = mines_maps[row][col]+'0';
 				if (mines_maps[row][col] == 0) {
@@ -241,7 +242,10 @@ int game() {
 	}
 }
 int main(){
-	menu();
+	if (menu() == 2) {
+		system("pause");
+		return 0;
+			};
 	game();
 	system("pause");
 	return 0;
