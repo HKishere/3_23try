@@ -40,15 +40,42 @@ char* Strcpy(char* dest, char* source) {
 	}
 	return dest;
 }
-
+char* Strchr(char* source, int to_find) {
+	int i;
+	int len = strlen(source);
+	for (i = 0; i < len; ++i) {
+		if ((int)source[i] == to_find){
+			return &source[i];
+		}
+	}
+	return NULL;
+}
+int Strcmp(char* source1, char* source2) {
+	char* ptr1 = source1;
+	char* ptr2 = source2;
+	if (*ptr1 =='\0' && *ptr2 == '\0'){
+		return 0;
+	}
+	else {
+		if (*ptr1 == *ptr2) {
+			return Strcmp(ptr1 + 1 ,ptr2 + 1);
+		}
+		else {
+			return *ptr1-*ptr2;
+		}
+	}
+}
 int main() {
 	char str1[1024] = "kishere";
 	char str2[1024] = " is god!";
+	printf("%d\n", Strcmp(str1, "kisha"));
 	Strcat(str1, str2);
 	printf("%s\n", str1);
 	printf("%s\n", Strstr(str1, str2));
 	Strcpy(str2, str1);
 	printf("%s\n", str2);
+	printf("%s\n", Strchr(str1, 'e'));
+	printf("%d\n", Strcmp(str1, str2));
 	system("pause");
 	return 0;
 }
