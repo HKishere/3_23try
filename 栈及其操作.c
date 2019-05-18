@@ -41,13 +41,25 @@ void StackDestroy(Stack* ps) {
 }
 void PrintStack(PStack ps) {
 	for (int i = 0; i < ps->_size; ++i) {
-		printf("%u", ps->arr[i]);
+		printf("%u ", ps->arr[i]);
 	}
+	printf("\n");
 	return;
 }
 
 int main (){
-	
+	PStack stacks1=(PStack)malloc(sizeof(Stack));
+	InitStack(stacks1);
+	StackPush(stacks1, 1);
+	StackPush(stacks1, 2);
+	StackPush(stacks1, 3);
+	StackPush(stacks1, 4);
+	StackPush(stacks1, 5);
+	PrintStack(stacks1);
+	printf("size of stack:%d\n", StackSize(stacks1));
+	Stackpop(stacks1);
+	StackPush(stacks1, 6);
+	PrintStack(stacks1);
 	system("pause");
 	return 0;
 }
