@@ -20,15 +20,15 @@ typedef struct SList
 
 // 链表的初始化 
 void SListInit(SList* s){
-	s->_pHead = NULL;
+	s->_pHead = NULL;//初始化时一定要指向null
 	return;
 }
 
 // 在链表s最后一个节点后插入值为data的节点 
 void SListPushBack(SList* s, SDataType data) {
 	PNode p = s->_pHead;
-	if (p == NULL) {
-		PNode newnode = (PNode)malloc(sizeof(Node));
+	if (p == NULL) {//为了避免操作指向null的指针,要先判断是否指向s->_head
+		PNode newnode = (PNode)malloc(sizeof(Node));//malloc的时候sizeof后面加的类型是node而不是node*,否则会发生内存泄露
 		s->_pHead = newnode;
 		newnode->_data = data;
 		newnode->_pNext = NULL;
@@ -45,7 +45,7 @@ void SListPushBack(SList* s, SDataType data) {
 }
 
 // 删除链表s最后一个节点 
-void SListPopBack(SList* s) {
+void SListPopBack(PSList s) {
 	PNode p = s->_pHead;
 	while (p->_pNext->_pNext != NULL) {
 		p = p->_pNext;
@@ -56,7 +56,7 @@ void SListPopBack(SList* s) {
 }
 
 // 在链表s第一个节点前插入值为data的节点 
-void SListPushFront(SList* s, SDataType data) {
+void SListPushFront(PSList s, SDataType data) {
 	PNode newnode = (PNode)malloc(sizeof(Node));
 	newnode->_data = data;
 	newnode->_pNext = s->_pHead;
@@ -65,7 +65,7 @@ void SListPushFront(SList* s, SDataType data) {
 }
 
 // 删除链表s的第一个节点 
-void SListPopFront(SList* s) {
+void SListPopFront(PSList s) {
 	PNode p = s->_pHead;
 	s->_pHead = p->_pNext;
 	free(p);
@@ -81,7 +81,7 @@ void SListInsert(PNode pos, SDataType data) {
 }
 
 // 删除链表s中pos位置的节点 
-void SListErase(SList* s, PNode pos){
+void SListErase(PSList s, PNode pos){
 	PNode p = s->_pHead;
 	while (p->_pNext != pos) {
 		p = p->_pNext;
@@ -92,18 +92,18 @@ void SListErase(SList* s, PNode pos){
 }
 
 // 在链表中查找值为data的节点，找到返回该节点的地址，否则返回NULL 
-PNode SListFind(SList* s, SDataType data) {
+PNode SListFind(PSList s, SDataType data) {
 	PNode p = s->_pHead;
 	do {
 		if (p->_data == data){
 			break;
 		}
 		p = p->_pNext;
-	} while (p->_pNext != NULL);
+	} while (p->_pNext != NULL);//do while的条件和while一样
 	return p;
 }
 // 获取链表中有效节点的个数 
-size_t SListSize(SList* s) {
+size_t SListSize(PSList s) {
 	size_t size = 0;
 	PNode p = s->_pHead;
 	while (p){
@@ -114,14 +114,14 @@ size_t SListSize(SList* s) {
 }
 
 // 检测链表是否为空 
-int SListEmpty(SList* s) {
+int SListEmpty(PSList s) {
 	if (s->_pHead != NULL) {
 		return 1;
 	}
 	return 0;
 }
 // 将链表中有效节点清空 
-void SListClear(SList* s) {
+void SListClear(PSList s) {
 	PNode p = s->_pHead;
 	while (p){
 		p->_data = 0;
@@ -137,7 +137,7 @@ void SListDestroy(PSList s) {
 	while (ptr) {
 		p = ptr->_pNext;
 		free(ptr);
-		ptr = p;
+		ptr = p;//销毁链表时也应该注意避免操作指向null的指针
 	}
 	free(s);
 }
@@ -170,6 +170,8 @@ void testslist(PSList p) {
 	SlistPrint(p);
 	prt = SListFind(p, 2);
 	SListInsert(prt, 77);
+	SlistPrint(p);
+	SListClear(p);
 	SlistPrint(p);
 	return;
 }
