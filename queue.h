@@ -1,27 +1,26 @@
-#define  _CRT_SECURE_NO_WARNINGS
-#pragma one
-#include<stdio.h>
-#include<stdlib.h>
+#pragma once
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-#define MAX_SIZE 10
+typedef int QDataType;
 
-typedef int DataType;
-
-typedef struct Node {
-	DataType _data;
-	PNode _next;
-}Node,*PNode;
+typedef struct QNode{
+	struct QNode* _pNext;
+	QDataType _data;
+}QNode;
 
 typedef struct Queue{
-	PNode _head;
-}Queue, *PQueue;
+	QNode* _front; // 指向队头元素 
+	QNode* _back; // 指向队尾元素 
+}Queue;
 
-void QueueInit(Queue* q); 
-void QueuePush(Queue* q, DataType data); 
-void QueuePop(Queue* q); 
-DataType QueueFront(Queue* q); 
-DataType QueueBack(Queue* q); 
-int QueueSize(Queue* q); 
-int QueueEmpty(Queue* q); 
-void QueueDestroy(Queue* q); 
-
+void QueueInit(Queue* q);
+void QueuePush(Queue* q, QDataType data);
+void QueuePop(Queue* q);
+QDataType QueueFront(Queue* q);
+QDataType QueueBack(Queue* q);
+int QueueSize(Queue* q);
+int QueueEmpty(Queue* q);
+void QueueDestroy(Queue* q);
+void QueuePrint(Queue* q);
