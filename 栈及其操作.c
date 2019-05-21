@@ -6,34 +6,34 @@
 
 typedef int Datatype;
 
-typedef struct Stack{
+typedef struct Stack{//创建栈
 	Datatype* arr;
 	int _size;
 	int _capacity;
 } Stack ,*PStack;
 
-void InitStack(PStack s){
+void InitStack(PStack s){//初始化栈
 	assert(s);
 	s->_capacity = MAX_INIT_SIZE;
 	s->arr = (Datatype*)malloc(sizeof(Datatype)*s->_capacity);
 	s->_size = 0;
 }
-void StackPush(PStack ps,Datatype data){
+void StackPush(PStack ps,Datatype data){//压栈操作	
 	assert(ps);
 	ps->arr[ps->_size] = data;
 	++ps->_size;
 	return;
 }
-void Stackpop(PStack ps) {
+void Stackpop(PStack ps) {//弹栈
 	assert(ps);
 	--ps->_size;
 	return;
 }
-int StackSize(PStack ps) {
+int StackSize(PStack ps) {//获取栈的有效元素个数
 	assert(ps);
 	return ps->_size;
 }
-int StackEmpty(PStack ps) {
+int StackEmpty(PStack ps) {//判断栈是否为空
 	assert(ps);
 	if (ps->_size){
 		return 0;
@@ -42,11 +42,11 @@ int StackEmpty(PStack ps) {
 		return 1;
 	}
 }
-void StackDestroy(Stack* ps) {
+void StackDestroy(Stack* ps) {//销毁栈
 	assert(ps);
 	free(ps);
 }
-void PrintStack(PStack ps) {
+void PrintStack(PStack ps) {//遍历打印栈内元素
 	assert(ps);
 	for (int i = 0; i < ps->_size; ++i) {
 		printf("%u ", ps->arr[i]);
