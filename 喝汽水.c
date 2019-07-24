@@ -1,7 +1,7 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
-#define  START_MONEY 20
+#define  START_MONEY 20//初始金钱
 int main (){
 	int bottle = 0;
 	int alreadydrink = 0;
