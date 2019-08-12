@@ -16,7 +16,7 @@ private:
 
 
 int main() {
-	date a(2019,1,1);
-	date b(a);
+	date a(2019,1,1);//实例化一个对象
+	date b(a);//拷贝构造一个对象
 	return 0;
 }
