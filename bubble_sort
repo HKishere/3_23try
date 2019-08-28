@@ -17,10 +17,10 @@ void bubble_sort(vector<int> arr){
 int main(){
     vector<int> a;
     a.push_back(1);
-        a.push_back(3);
-            a.push_back(9);
-                a.push_back(2);
-                    a.push_back(7);
+    a.push_back(3);
+    a.push_back(9);
+    a.push_back(2);
+    a.push_back(7);
     bubble_sort(a);
     for(int i=0;i<a.length();++i){
         cout<<a[i];
