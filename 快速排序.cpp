@@ -23,6 +23,7 @@ void Print(int a[]) {
 	}
 	cout << endl;
 }
+
 int main() {
 	QuickSort(Num3, 11);
 	Print(Num3);
