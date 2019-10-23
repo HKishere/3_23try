@@ -38,8 +38,6 @@ int main(){
   pthread_join(t2, NULL);
   pthread_join(t3, NULL);
   pthread_join(t4, NULL);
-
-  int ret;
-
-  pthread_mutexattr_destroy(&mutex);
+  pthread_mutex_destroy(&mutex);
+  
 }
